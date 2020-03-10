@@ -1,6 +1,8 @@
+import os
+from glob import glob
 from setuptools import setup
 
-package_name = 'main_drive'
+package_name = 'rover_main_drive'
 
 setup(
     name=package_name,
@@ -15,12 +17,13 @@ setup(
     zip_safe=True,
     maintainer='Sean DeBarr',
     maintainer_email='sedebarr@liberty.edu',
-    description='Node for controlling the ODrive boards',
+    description='The rover drive packages',
     license='Apache License 2.0',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'driver = main_drive.odrive_driver:main',
+            'odrive = rover_main_drive.odrive_driver:main',
+            'cmdmaster = rover_main_drive.control_master:main',
         ],
     },
 )

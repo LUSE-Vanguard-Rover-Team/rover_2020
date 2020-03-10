@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import rclpy
 from rclpy.node import Node
 
@@ -23,6 +24,7 @@ class MainDriveTeleop(Node):
 		self.num_buttons = num_buttons
 
 		self.speed_setting = 2
+		self.max_speed = 1000
 
 		self.joy_publisher_ = self.create_publisher(Joy, 'xbox_controller_val', 10)
 		
@@ -51,9 +53,6 @@ class MainDriveTeleop(Node):
 							if value:
 								self.get_logger().info("%s pressed" % (button))
 								self.m.buttons[number] = value
-								if number == 6:
-									self.m.axes[1] = 0
-									self.m.axes[4] = 0
 							else:
 								self.get_logger().info("%s released" % (button))
 								self.m.buttons[number] = value
@@ -65,7 +64,7 @@ class MainDriveTeleop(Node):
 							if number == 0:
 								pass
 							if number == 1:
-								self.m.axes[number] = self.map(value, -32767, 32767, -200 / self.speed_setting, 200 / self.speed_setting)
+								self.m.axes[number] = self.map(value, -32767, 32767, -self.max_speed / self.speed_setting, self.max_speed / self.speed_setting)
 								self.get_logger().info("%.3f - %s: %.3f" % (mtime, axis, self.m.axes[number]))
 							if number == 2:
 								self.m.axes[number] = self.map(value, -32767, 32767, -200, 200)
@@ -73,21 +72,25 @@ class MainDriveTeleop(Node):
 							if number == 3:
 								pass
 							if number == 4:
-								self.m.axes[number] = self.map(value, -32767, 32767, -200 / self.speed_setting, 200 / self.speed_setting)
+								self.m.axes[number] = self.map(value, -32767, 32767, -self.max_speed / self.speed_setting, self.max_speed / self.speed_setting)
 								self.get_logger().info("%.3f - %s: %.3f" % (mtime, axis, self.m.axes[number]))
 							if number == 5:
 								self.m.axes[number] = self.map(value, -32767, 32767, -200, 200)
 								self.get_logger().info("%.3f - %s: %.3f" % (mtime, axis, self.m.axes[number]))
 							if number == 6:
-								self.speed_setting = 2
-								self.m.axes[number] = self.speed_setting
+								if value > 0:
+									self.speed_setting = 3
+									self.m.axes[number] = self.speed_setting
+								if value < 0:
+									self.speed_setting = 2
+									self.m.axes[number] = self.speed_setting
 								self.get_logger().info("%.3f - %s: %.3f" % (mtime, axis, self.m.axes[number]))
 							if number == 7:
 								if value > 0:
-									self.speed_setting = 1
+									self.speed_setting = 4
 									self.m.axes[number] = self.speed_setting
 								if value < 0:
-									self.speed_setting = 3
+									self.speed_setting = 1
 									self.m.axes[number] = self.speed_setting
 								self.get_logger().info("%.3f - %s: %.3f" % (mtime, axis, self.m.axes[number]))
 					self.joy_publisher_.publish(self.m)

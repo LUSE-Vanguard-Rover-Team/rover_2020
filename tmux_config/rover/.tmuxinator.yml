@@ -1,0 +1,17 @@
+name: ROVER
+root: ~/Vanguard/dev_ws
+windows:
+  -  STATUS: 
+      layout: tiled
+      panes:
+        - top
+        - htop
+        - dmesg -w -H
+        - watch "./Scripts/cpu_temp.sh; df -h"
+  - DRIVE: 
+      layout: tiled
+      panes:
+        - . install/setup.bash; ros2 run rover_main_drive odrive
+        - . install/setup.bash; ros2 run rover_main_drive cmdmaster
+        - . install/setup.bash; sleep 5; ros2 topic echo /drive_cmd
+        - . install/setup.bash; sleep 15; ros2 topic echo /drive_telemetry

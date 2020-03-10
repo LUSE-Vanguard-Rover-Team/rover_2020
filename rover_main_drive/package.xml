@@ -1,17 +1,15 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>ros_joy</name>
+  <name>rover_main_drive</name>
   <version>0.0.1</version>
-  <description>Nodes for joysticks</description>
+  <description>The rover drive packages</description>
   <maintainer email="sedebarr@liberty.edu">vanguard</maintainer>
   <license>Apache License 2.0</license>
 
   <buildtool_depend>ament_python</buildtool_depend>
-
-  <exec_depend>geometry_msgs</exec_depend>
-  <exec_depend>sensor_msgs</exec_depend>
-  <exec_depend>pygame</exec_depend>
+  
+  <exec_depend>rover_msgs</exec_depend>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
