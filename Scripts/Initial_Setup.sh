@@ -19,3 +19,4 @@ mkdir dev_ws/src
 cd dev_ws/src
 git clone https://github.com/LUSE-Vanguard-Rover-Team/rover_2020.git
 colcon build
+echo "source /Vanguard/dev_ws/src/install/setup.bash" >> ~/.bashrc
