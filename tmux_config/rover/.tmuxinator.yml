@@ -13,7 +13,7 @@ windows:
       root: ~/Vanguard/dev_ws/src/rover_2020/
       layout: tiled
       panes:
-        - . install/setup.bash; ros2 run rover_main_drive odrive
-        - . install/setup.bash; ros2 run rover_main_drive cmdmaster
-        - . install/setup.bash; sleep 5; ros2 topic echo /drive_cmd
-        - . install/setup.bash; sleep 15; ros2 topic echo /drive_telemetry
+        - ros2 run rover_main_drive odrive
+        - ros2 run rover_main_drive cmdmaster
+        - sleep 5; ros2 topic echo /drive_cmd
+        - sleep 25; ros2 topic echo /drive_telemetry
