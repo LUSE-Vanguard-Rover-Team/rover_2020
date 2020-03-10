@@ -11,8 +11,10 @@ source /opt/ros/eloquent/setup.bash
 echo "source /opt/ros/eloquent/setup.bash" >> ~/.bashrc
 echo "export ROS_DOMAIN_ID=1" >> ~/.bashrc
 printenv | grep -i ROS
+sudo apt install python3-colcon-common-extensions
 
 echo "Setting up ROS 2 workspace!"
+mkdir dev_ws
 mkdir dev_ws/src
 cd dev_ws/src
 git clone https://github.com/LUSE-Vanguard-Rover-Team/rover_2020.git

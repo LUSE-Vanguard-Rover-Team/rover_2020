@@ -1,5 +1,5 @@
 name: ROVER
-root: ~/Vanguard/dev_ws
+root: ~/Vanguard/dev_ws/src/rover_2020/
 windows:
   -  STATUS: 
       layout: tiled
