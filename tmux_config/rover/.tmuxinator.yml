@@ -2,6 +2,7 @@ name: ROVER
 root: ~/Vanguard/dev_ws/src/rover_2020/
 windows:
   -  STATUS: 
+      root: ~/Vanguard/dev_ws/src/rover_2020/
       layout: tiled
       panes:
         - top
@@ -9,6 +10,7 @@ windows:
         - dmesg -w -H
         - watch "./Scripts/cpu_temp.sh; df -h"
   - DRIVE: 
+      root: ~/Vanguard/dev_ws/src/rover_2020/
       layout: tiled
       panes:
         - . install/setup.bash; ros2 run rover_main_drive odrive
