@@ -19,4 +19,5 @@ echo "Setting up workspace"
 cd $working_dir/ros2ws
 colcon build
 echo "source $working_dir/ros2ws/install/setup.bash" >> ~/.bashrc
+source $working_dir/ros2ws/install/setup.bash
 echo "Finished setup"
