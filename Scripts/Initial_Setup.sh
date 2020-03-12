@@ -13,10 +13,9 @@ echo "export ROS_DOMAIN_ID=1" >> ~/.bashrc
 printenv | grep -i ROS
 sudo apt install python3-colcon-common-extensions
 
-echo "Setting up ROS 2 workspace!"
-mkdir dev_ws
-mkdir dev_ws/src
-cd dev_ws/src
+echo "Setting up workspace!"
+cd ~/
 git clone https://github.com/LUSE-Vanguard-Rover-Team/rover_2020.git
+cd ~/rover_2020/ros2ws
 colcon build
-echo "source /Vanguard/dev_ws/src/install/setup.bash" >> ~/.bashrc
+echo "source ~/rover_2020/ros2ws/install/setup.bash" >> ~/.bashrc
