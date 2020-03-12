@@ -1,4 +1,5 @@
 #!/bin/bash
+working_dir=$(locate -b rover_2020)
 
 echo "Installing ROS 2"
 sudo apt update && sudo apt install curl gnupg2 lsb-release
@@ -10,12 +11,12 @@ sudo apt install python3-argcomplete
 source /opt/ros/eloquent/setup.bash
 echo "source /opt/ros/eloquent/setup.bash" >> ~/.bashrc
 echo "export ROS_DOMAIN_ID=1" >> ~/.bashrc
-printenv | grep -i ROS
 sudo apt install python3-colcon-common-extensions
+printenv | grep -i ROS
+sleep 2
 
-echo "Setting up workspace!"
-cd ~/
-git clone https://github.com/LUSE-Vanguard-Rover-Team/rover_2020.git
-cd ~/rover_2020/ros2ws
+echo "Setting up workspace"
+cd $current_dir/ros2ws
 colcon build
-echo "source ~/rover_2020/ros2ws/install/setup.bash" >> ~/.bashrc
+echo "source $current_dir/ros2ws/install/setup.bash" >> ~/.bashrc
+echo "Finished setup"
