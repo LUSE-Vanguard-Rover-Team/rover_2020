@@ -16,7 +16,7 @@ printenv | grep -i ROS
 sleep 2
 
 echo "Setting up workspace"
-cd $current_dir/ros2ws
+cd $working_dir/ros2ws
 colcon build
-echo "source $current_dir/ros2ws/install/setup.bash" >> ~/.bashrc
+echo "source $working_dir/ros2ws/install/setup.bash" >> ~/.bashrc
 echo "Finished setup"
