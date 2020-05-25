@@ -14,9 +14,11 @@ echo "source /opt/ros/eloquent/setup.bash" >> ~/.bashrc
 echo "export ROS_DOMAIN_ID=1" >> ~/.bashrc
 sudo apt install python3-colcon-common-extensions -y
 printenv | grep -i ROS
-sleep 2
+echo ""
+echo ""
 
 echo "Setting up workspace"
+sleep 2
 cd $working_dir/ros2ws
 colcon build
 echo "source $working_dir/ros2ws/install/setup.bash" >> ~/.bashrc
